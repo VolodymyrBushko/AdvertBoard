@@ -10,4 +10,11 @@ public class AdvertBoardApplication {
         SpringApplication.run(AdvertBoardApplication.class, args);
     }
 
+//    @Bean
+//    public CommandLineRunner commandLineRunner(UserServiceImpl service) {
+//        return args -> {
+//            service.getAll();
+//        };
+//    }
+
 }
