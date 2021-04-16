@@ -84,6 +84,9 @@ public class User implements Serializable {
     }
 
     public void setAdverts(Set<Advert> adverts) {
+        if (adverts != null) {
+            adverts.forEach(e -> e.setUser(this));
+        }
         this.adverts = adverts;
     }
 
