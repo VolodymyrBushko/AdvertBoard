@@ -14,5 +14,5 @@ public interface UserService {
 
     User update(User entity, Long id);
 
-    User remove(Long id);
+    void remove(Long id);
 }

@@ -14,5 +14,5 @@ public interface AdvertService {
 
     Advert update(Advert entity, Long id);
 
-    Advert remove(Long id);
+    void remove(Long id);
 }
