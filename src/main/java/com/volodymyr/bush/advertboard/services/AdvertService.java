@@ -10,9 +10,9 @@ public interface AdvertService {
 
     Advert getById(Long id);
 
-    Advert create(Advert entity);
+    Advert create(Advert advert);
 
-    Advert update(Advert entity, Long id);
+    Advert update(Advert newAdvert, Long id);
 
     void remove(Long id);
 }
