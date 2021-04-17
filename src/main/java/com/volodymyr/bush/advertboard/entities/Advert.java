@@ -1,5 +1,8 @@
 package com.volodymyr.bush.advertboard.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.sql.Date;
@@ -14,22 +17,29 @@ public class Advert implements Serializable {
     private String category;
     private String text;
     private String contacts;
-    private Date startDate;
     private Integer duration;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")
+    private Date startDate;
+
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
+    @JsonBackReference
     private User user;
+
+    @Transient
+    private Long userId;
 
     public Advert() {
     }
 
-    public Advert(String category, String text, String contacts, Date startDate, Integer duration) {
+    public Advert(String category, String text, String contacts, Date startDate, Integer duration, Long userId) {
         this.category = category;
         this.text = text;
         this.contacts = contacts;
         this.startDate = startDate;
         this.duration = duration;
+        this.userId = userId;
     }
 
     public Long getId() {
@@ -86,6 +96,14 @@ public class Advert implements Serializable {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
     }
 
     @Override

@@ -1,7 +1,10 @@
 package com.volodymyr.bush.advertboard.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
@@ -17,7 +20,8 @@ public class User implements Serializable {
     private String email;
     private String password;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private Set<Advert> adverts;
 
     public User() {
@@ -84,10 +88,17 @@ public class User implements Serializable {
     }
 
     public void setAdverts(Set<Advert> adverts) {
-        if (adverts != null) {
-            adverts.forEach(e -> e.setUser(this));
+        if (this.adverts == null) {
+            this.adverts = new HashSet<>();
         }
-        this.adverts = adverts;
+        if (adverts != null) {
+            adverts.forEach(e -> {
+                boolean added = this.adverts.add(e);
+                if (added) {
+                    e.setUser(this);
+                }
+            });
+        }
     }
 
     @Override
