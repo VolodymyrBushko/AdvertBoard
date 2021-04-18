@@ -1,12 +1,46 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>User Manager</title>
+    <link rel="stylesheet" href="/library/bootstrap/css/bootstrap.min.css">
+    <title>UserList</title>
 </head>
 <body>
 
-<h3>User Manager</h3>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h3 class="text-center my-5">UserList</h3>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <table class="table table-hover table-responsive">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Surname</th>
+                    <th>Phone</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="user : ${users}"
+                    style="cursor: pointer" th:onclick="'window.location.href=\'' + @{/users/{id}(id=${user.id})} + '\''">
+                    <td th:text="${user.id}"/>
+                    <td th:text="${user.name}"/>
+                    <td th:text="${user.surname}"/>
+                    <td th:text="${user.phone}"/>
+                    <td th:text="${user.email}"/>
+                    <td th:text="${user.password}"/>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
