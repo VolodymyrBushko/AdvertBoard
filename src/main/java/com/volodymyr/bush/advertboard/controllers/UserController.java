@@ -9,4 +9,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping("/users/")
 public class UserController {
 
+    private final String URL = "http://localhost:8080/api/data/adverts";
+
+    @GetMapping
+    public String index() {
+        return "user/index";
+    }
 }
