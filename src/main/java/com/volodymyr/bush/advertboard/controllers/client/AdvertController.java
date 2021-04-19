@@ -35,6 +35,7 @@ public class AdvertController {
     @GetMapping("create")
     public String createAdvertPage(Model model) {
         model.addAttribute("advert", new Advert());
+        model.addAttribute("users", userService.getAll());
         return "advert/create";
     }
 
