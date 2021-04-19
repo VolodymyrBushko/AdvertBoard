@@ -10,6 +10,12 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-6">
+            <h3 class="text-center my-5">UserInfo</h3>
+            <hr/>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
             <form action="#" th:action="@{/users/{id}(id=${user.id})}" th:object="${user}" th:method="put">
                 <div class="form-group">
                     <label for="name">Name:</label>
@@ -32,6 +38,8 @@
                     <input type="text" id="password" th:field="*{password}" class="form-control"/>
                 </div>
                 <div class="text-center">
+                    <br/>
+                    <br/>
                     <a th:href="@{/users/}" class="btn btn-primary">Back</a>
                     <a th:href="@{/users/delete/{id}(id=${user.id})}" class="btn btn-danger">Delete</a>
                     <button type="submit" class="btn btn-warning text-white">Update</button>

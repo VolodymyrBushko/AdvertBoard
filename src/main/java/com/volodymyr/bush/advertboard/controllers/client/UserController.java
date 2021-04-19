@@ -28,6 +28,18 @@ public class UserController {
         return "user/info";
     }
 
+    @GetMapping("create")
+    public String createUserPage(Model model) {
+        model.addAttribute("user", new User());
+        return "user/create";
+    }
+
+    @PostMapping
+    public String createUser(@ModelAttribute User user) {
+        service.create(user);
+        return "redirect:/users/";
+    }
+
     @PutMapping("{id}")
     public String updateUser(@ModelAttribute User user, @PathVariable Long id) {
         service.update(user, id);
