@@ -6,6 +6,7 @@ import com.volodymyr.bush.advertboard.exceptions.NotFoundException;
 import com.volodymyr.bush.advertboard.repositories.AdvertRepository;
 import com.volodymyr.bush.advertboard.services.interfaces.AdvertService;
 import com.volodymyr.bush.advertboard.services.interfaces.UserService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,9 +16,9 @@ import java.util.Set;
 public class AdvertServiceImpl implements AdvertService {
 
     private final AdvertRepository advertRepository;
-    private final UserService userService;
+    private final UserServiceImpl userService;
 
-    public AdvertServiceImpl(AdvertRepository advertRepository, UserService userService) {
+    public AdvertServiceImpl(AdvertRepository advertRepository, UserServiceImpl userService) {
         this.advertRepository = advertRepository;
         this.userService = userService;
     }

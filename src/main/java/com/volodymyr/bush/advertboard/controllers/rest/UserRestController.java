@@ -2,6 +2,7 @@ package com.volodymyr.bush.advertboard.controllers.rest;
 
 import com.volodymyr.bush.advertboard.entities.User;
 import com.volodymyr.bush.advertboard.services.interfaces.UserService;
+import com.volodymyr.bush.advertboard.services.rest.UserServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,9 +11,9 @@ import java.util.List;
 @RequestMapping("/api/data/users/")
 public class UserRestController {
 
-    private final UserService service;
+    private final UserServiceImpl service;
 
-    public UserRestController(UserService service) {
+    public UserRestController(UserServiceImpl service) {
         this.service = service;
     }
 
