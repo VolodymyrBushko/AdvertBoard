@@ -1,4 +1,4 @@
-package com.volodymyr.bush.advertboard.services;
+package com.volodymyr.bush.advertboard.services.interfaces;
 
 import com.volodymyr.bush.advertboard.entities.User;
 

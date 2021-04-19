@@ -1,8 +1,9 @@
-package com.volodymyr.bush.advertboard.services;
+package com.volodymyr.bush.advertboard.services.rest;
 
 import com.volodymyr.bush.advertboard.entities.User;
 import com.volodymyr.bush.advertboard.exceptions.NotFoundException;
 import com.volodymyr.bush.advertboard.repositories.UserRepository;
+import com.volodymyr.bush.advertboard.services.interfaces.UserService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
