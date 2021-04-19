@@ -35,6 +35,12 @@
                     <label for="duration">Duration:</label>
                     <input type="number" id="duration" th:field="*{duration}" class="form-control"/>
                 </div>
+                <div class="form-group">
+                    <label for="user">User:</label>
+                    <select id="user" th:field="*{userId}" class="form-control">
+                        <option th:each="user : ${users}" th:value="${user.id}" th:text="${user.name}"/>
+                    </select>
+                </div>
                 <div class="text-center">
                     <br/>
                     <br/>

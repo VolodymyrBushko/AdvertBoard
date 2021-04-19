@@ -26,6 +26,7 @@
                     <th>Text</th>
                     <th>Contacts</th>
                     <th>Duration</th>
+                    <th>User</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -37,6 +38,7 @@
                     <td th:text="${advert.text}"/>
                     <td th:text="${advert.contacts}"/>
                     <td th:text="${advert.duration}"/>
+                    <td th:text="${advert.user.name}"/>
                 </tr>
                 </tbody>
             </table>
