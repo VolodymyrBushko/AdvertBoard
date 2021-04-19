@@ -9,5 +9,47 @@
 
 <div th:replace="~{fragments/navbar}"/>
 
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h3 class="text-center my-5">AdvertList</h3>
+            <hr/>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <table class="table table-hover table-responsive">
+                <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Category</th>
+                    <th>Text</th>
+                    <th>Contacts</th>
+                    <th>Duration</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="advert : ${adverts}"
+                    style="cursor: pointer"
+                    th:onclick="'window.location.href=\'' + @{/adverts/{id}(id=${advert.id})} + '\''">
+                    <td th:text="${advert.id}"/>
+                    <td th:text="${advert.category}"/>
+                    <td th:text="${advert.text}"/>
+                    <td th:text="${advert.contacts}"/>
+                    <td th:text="${advert.duration}"/>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <br/>
+            <br/>
+            <a href="/adverts/create" class="btn btn-success text-white">Create</a>
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
