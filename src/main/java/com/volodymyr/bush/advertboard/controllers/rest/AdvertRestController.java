@@ -2,6 +2,7 @@ package com.volodymyr.bush.advertboard.controllers.rest;
 
 import com.volodymyr.bush.advertboard.entities.Advert;
 import com.volodymyr.bush.advertboard.services.interfaces.AdvertService;
+import com.volodymyr.bush.advertboard.services.rest.AdvertServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -10,9 +11,9 @@ import java.util.List;
 @RequestMapping("/api/data/adverts/")
 public class AdvertRestController {
 
-    private final AdvertService service;
+    private final AdvertServiceImpl service;
 
-    public AdvertRestController(AdvertService service) {
+    public AdvertRestController(AdvertServiceImpl service) {
         this.service = service;
     }
 
