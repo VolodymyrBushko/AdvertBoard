@@ -1,6 +1,7 @@
 package com.volodymyr.bush.advertboard.services.client;
 
 import com.volodymyr.bush.advertboard.entities.Advert;
+import com.volodymyr.bush.advertboard.entities.User;
 import com.volodymyr.bush.advertboard.services.interfaces.AdvertService;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
@@ -14,10 +15,12 @@ import java.util.List;
 public class AdvertServiceClientImpl implements AdvertService {
 
     private final RestTemplate restTemplate;
+    private final UserServiceClientImpl userService;
     private final String URL = "http://localhost:8080/api/data/adverts/";
 
-    public AdvertServiceClientImpl(RestTemplate restTemplate) {
+    public AdvertServiceClientImpl(RestTemplate restTemplate, UserServiceClientImpl userService) {
         this.restTemplate = restTemplate;
+        this.userService = userService;
     }
 
     @Override
@@ -46,6 +49,14 @@ public class AdvertServiceClientImpl implements AdvertService {
 
     @Override
     public void remove(Long id) {
-        restTemplate.delete(URL + id);
+        //restTemplate.delete(URL + id);
+        Advert advert = getById(id);
+        if (advert != null) {
+            User user = userService.getById(advert.getUser().getId());
+            user.getAdverts().removeIf(e -> e.getId().equals(advert.getId()));
+            advert.setUser(null);
+            userService.update(user, user.getId());
+            restTemplate.delete(URL + id);
+        }
     }
 }

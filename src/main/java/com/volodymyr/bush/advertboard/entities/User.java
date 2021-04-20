@@ -1,6 +1,7 @@
 package com.volodymyr.bush.advertboard.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -21,7 +22,8 @@ public class User implements Serializable {
     private String password;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    @JsonIgnore
+//    @JsonIgnore
+    @JsonIgnoreProperties("user")
     private Set<Advert> adverts;
 
     public User() {

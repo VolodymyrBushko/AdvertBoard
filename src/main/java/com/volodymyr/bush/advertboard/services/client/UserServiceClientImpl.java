@@ -40,7 +40,9 @@ public class UserServiceClientImpl implements UserService {
     @Override
     public User update(User newUser, Long id) {
         HttpEntity<User> request = new HttpEntity<>(newUser);
+        System.out.println(newUser.getAdverts());
         restTemplate.exchange(URL + id, HttpMethod.PUT, request, Void.class);
+        System.out.println(getById(id).getAdverts());
         return newUser;
     }
 
