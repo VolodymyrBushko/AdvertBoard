@@ -49,7 +49,6 @@ public class AdvertServiceClientImpl implements AdvertService {
 
     @Override
     public void remove(Long id) {
-        //restTemplate.delete(URL + id);
         Advert advert = getById(id);
         if (advert != null) {
             User user = userService.getById(advert.getUser().getId());

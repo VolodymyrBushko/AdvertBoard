@@ -1,7 +1,6 @@
 package com.volodymyr.bush.advertboard.controllers.rest;
 
 import com.volodymyr.bush.advertboard.entities.User;
-import com.volodymyr.bush.advertboard.services.interfaces.UserService;
 import com.volodymyr.bush.advertboard.services.rest.UserServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
